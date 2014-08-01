@@ -36,6 +36,7 @@ case class OnSalesJsonRequest(
   itemList: Seq[SalesItem]
 ) {
   lazy val tranDateInYyyyMmDd: Int = toYyyyMmDd(dateTime)
+  lazy val transactionMode: TransactionMode = TransactionMode(mode)
 }
 
 case class RecommendBySingleItemJsonRequest(
@@ -67,17 +68,3 @@ case class CreateItemRecommendBySite(
 ) {
   lazy val itemListAsMap: Map[String, Double] = itemList.map { e => (e.storeCode + ":" + e.itemCode, e.score) }.toMap
 }
-
-object SortOrder {
-  val SortPattern = """(?i)(asc|desc)\((\w+)\)""".r
-  def apply(s: String): SortOrder = s match {
-    case SortPattern(order, code) => if (order.toLowerCase == "asc") Asc(code) else Desc(code)
-    case _ => throw new IllegalArgumentException("Invalid sort spec '" + s + "'")
-  }
-}
-
-sealed trait SortOrder {
-  val columnName: String
-}
-case class Asc(columnName: String) extends SortOrder
-case class Desc(columnName: String) extends SortOrder
