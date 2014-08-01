@@ -68,3 +68,13 @@ case class CreateItemRecommendBySite(
 ) {
   lazy val itemListAsMap: Map[String, Double] = itemList.map { e => (e.storeCode + ":" + e.itemCode, e.score) }.toMap
 }
+
+case class JsonResponseHeader(
+  sequenceNumber: String,
+  statusCode: String,
+  message: String
+)
+
+case class OnSalesJsonResponse(
+  header: JsonResponseHeader
+)
