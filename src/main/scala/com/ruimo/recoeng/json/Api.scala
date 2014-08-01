@@ -8,7 +8,9 @@ import Formatters._
 case class JsonRequestHeader(
   dateTime: DateTime,
   sequenceNumber: String
-)
+) {
+  lazy val dateTimeInYyyyMmDd: Int = toYyyyMmDd(dateTime)
+}
   
 case class JsonRequestPaging(
   offset: Int,
