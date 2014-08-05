@@ -9,7 +9,7 @@ case class JsonRequestHeader(
   dateTime: DateTime,
   sequenceNumber: String
 ) {
-  lazy val dateTimeInYyyyMmDd: Int = toYyyyMmDd(dateTime)
+  lazy val dateTimeInYyyyMmDdHhMmSs: String = toYyyyMmDdHhMmSs(dateTime)
 }
   
 case class JsonRequestPaging(
@@ -37,7 +37,7 @@ case class OnSalesJsonRequest(
   userCode: String,
   itemList: Seq[SalesItem]
 ) {
-  lazy val tranDateInYyyyMmDd: Int = toYyyyMmDd(dateTime)
+  lazy val tranDateInYyyyMmDdHhMmSs: String = toYyyyMmDdHhMmSs(dateTime)
   lazy val transactionMode: TransactionMode = TransactionMode(mode)
 }
 
