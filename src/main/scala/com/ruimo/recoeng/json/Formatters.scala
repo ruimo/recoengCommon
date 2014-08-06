@@ -9,6 +9,6 @@ object Formatters {
   val YyyyMmDdHhMmSsFormat: DateTimeFormatter = DateTimeFormat.forPattern("yyyyMMddHHmmss")
   def toYyyyMmDd(dateTime: DateTime): String = YyyyMmDdFormat.print(dateTime)
   def toYyyyMmDd(millis: Long): String = YyyyMmDdFormat.print(millis)
-  def toYyyyMmDdHhMmSs(dateTime: DateTime): String = YyyyMmDdFormat.print(dateTime)
-  def toYyyyMmDdHhMmSs(millis: Long): String = YyyyMmDdFormat.print(millis)
+  def toYyyyMmDdHhMmSs(dateTime: DateTime): String = YyyyMmDdHhMmSsFormat.print(dateTime)
+  def toYyyyMmDdHhMmSs(millis: Long): String = YyyyMmDdHhMmSsFormat.print(millis)
 }
