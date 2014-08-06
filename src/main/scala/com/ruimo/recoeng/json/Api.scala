@@ -82,3 +82,10 @@ case class JsonResponseHeader(
 case class OnSalesJsonResponse(
   header: JsonResponseHeader
 )
+
+case class RecommendBySingleItemResponse(
+  header: JsonResponseHeader,
+  itemList: Seq[ScoredItem],
+  sort: String,
+  paging: JsonRequestPaging
+)
