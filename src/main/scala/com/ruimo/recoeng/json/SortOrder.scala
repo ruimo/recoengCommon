@@ -11,5 +11,9 @@ object SortOrder {
 sealed trait SortOrder {
   val columnName: String
 }
-case class Asc(columnName: String) extends SortOrder
-case class Desc(columnName: String) extends SortOrder
+case class Asc(columnName: String) extends SortOrder {
+  override def toString = "asc(" + columnName + ")"
+}
+case class Desc(columnName: String) extends SortOrder {
+  override def toString = "desc(" + columnName + ")"
+}
