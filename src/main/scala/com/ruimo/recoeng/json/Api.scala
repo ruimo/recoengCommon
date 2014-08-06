@@ -73,6 +73,10 @@ case class CreateItemRecommendBySite(
   lazy val itemListAsMap: Map[String, Double] = itemList.map { e => (e.storeCode + ":" + e.itemCode, e.score) }.toMap
 }
 
+trait JsonResponse {
+  def header: JsonResponseHeader
+}
+
 case class JsonResponseHeader(
   sequenceNumber: String,
   statusCode: String,
@@ -81,11 +85,11 @@ case class JsonResponseHeader(
 
 case class OnSalesJsonResponse(
   header: JsonResponseHeader
-)
+) extends JsonResponse
 
 case class RecommendBySingleItemJsonResponse(
   header: JsonResponseHeader,
   itemList: Seq[ScoredItem],
   sort: String,
   paging: JsonRequestPaging
-)
+) extends JsonResponse
