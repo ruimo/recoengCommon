@@ -83,7 +83,7 @@ case class OnSalesJsonResponse(
   header: JsonResponseHeader
 )
 
-case class RecommendBySingleItemResponse(
+case class RecommendBySingleItemJsonResponse(
   header: JsonResponseHeader,
   itemList: Seq[ScoredItem],
   sort: String,
