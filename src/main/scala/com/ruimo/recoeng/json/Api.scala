@@ -45,8 +45,7 @@ case class OnSalesJsonRequest(
 
 case class RecommendBySingleItemJsonRequest(
   header: JsonRequestHeader,
-  storeCode: String,
-  itemCode: String,
+  salesItems: Seq[SalesItem],
   sort: String,
   paging: JsonRequestPaging
 ) {
