@@ -36,7 +36,7 @@ case class OnSalesJsonRequest(
   mode: String,
   dateTime: DateTime,
   userCode: String,
-  itemList: Seq[SalesItem]
+  salesItems: Seq[SalesItem]
 ) {
   lazy val tranDateInYyyyMmDdHhMmSs: String = toYyyyMmDdHhMmSs(dateTime)
   lazy val tranDateInYyyyMmDd: String = toYyyyMmDd(dateTime)
@@ -67,9 +67,11 @@ case class CreateItemRecommendBySite(
   header: JsonRequestHeader,
   storeCode: String,
   itemCode: String,
-  itemList: Seq[ScoredItem]
+  salesItems: Seq[ScoredItem]
 ) {
-  lazy val itemListAsMap: Map[String, Double] = itemList.map { e => (e.storeCode + ":" + e.itemCode, e.score) }.toMap
+  lazy val salesItemsAsMap: Map[String, Double] = salesItems.map {
+    e => (e.storeCode + ":" + e.itemCode, e.score)
+  }.toMap
 }
 
 trait JsonResponse {
@@ -88,7 +90,7 @@ case class OnSalesJsonResponse(
 
 case class RecommendByItemJsonResponse(
   header: JsonResponseHeader,
-  itemList: Seq[ScoredItem],
+  salesItems: Seq[ScoredItem],
   sort: String,
   paging: JsonRequestPaging
 ) extends JsonResponse
