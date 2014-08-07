@@ -43,7 +43,7 @@ case class OnSalesJsonRequest(
   lazy val transactionMode: TransactionMode = TransactionMode(mode)
 }
 
-case class RecommendBySingleItemJsonRequest(
+case class RecommendByItemJsonRequest(
   header: JsonRequestHeader,
   salesItems: Seq[SalesItem],
   sort: String,
@@ -86,7 +86,7 @@ case class OnSalesJsonResponse(
   header: JsonResponseHeader
 ) extends JsonResponse
 
-case class RecommendBySingleItemJsonResponse(
+case class RecommendByItemJsonResponse(
   header: JsonResponseHeader,
   itemList: Seq[ScoredItem],
   sort: String,
