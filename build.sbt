@@ -2,9 +2,7 @@ name := """recoengCommon"""
 
 organization := "com.ruimo"
 
-version := "1.1-SNAPSHOT"
-
-crossScalaVersions := List("2.10.4", "2.11.2") 
+crossScalaVersions := List("2.10.4", "2.11.2", "2.12.2") 
 
 publishTo := Some(
   Resolver.file(
@@ -13,10 +11,7 @@ publishTo := Some(
   )
 )
 
-// Change this to another test framework if you prefer
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.1.6" % "test"
+libraryDependencies += "joda-time" % "joda-time" % "2.9.9"
 
-libraryDependencies += "joda-time" % "joda-time" % "2.3"
-
-libraryDependencies += "org.joda" % "joda-convert" % "1.6"
+libraryDependencies += "org.joda" % "joda-convert" % "1.8.2"
 
